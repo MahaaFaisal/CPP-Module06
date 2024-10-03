@@ -1,6 +1,6 @@
 CPP = c++
 CPPFLAGS = -Wall -Wextra -Werror -Wfatal-errors
-SRCS = main.cpp Bureaucrat.cpp Utils.cpp tests.cpp
+SRCS = Utils.cpp main.cpp ScalarConverter.cpp helpers.cpp
 NAME = scalar
 
 all: $(NAME)
