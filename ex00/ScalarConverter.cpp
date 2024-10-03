@@ -7,13 +7,11 @@ ScalarConverter::~ScalarConverter(){}
 
 void	ScalarConverter::charToChar(char c)
 {
-	// fix with try catch
 	Utils::printMsg("char: ", "magenta");
 	std::cout << c << std::endl;
-
 }
 
-void		ScalarConverter::charToInt(char c)
+void	ScalarConverter::charToInt(char c)
 {
 	Utils::printMsg("int: ", "magenta");
 	std::cout << (int)c << std::endl;
@@ -22,21 +20,20 @@ void		ScalarConverter::charToInt(char c)
 void	ScalarConverter::charToFloat(char c)
 {
 	Utils::printMsg("float: ", "magenta");
-	std::cout << float(c) << std::endl;
+	std::cout << float(c) << ".0f\n";
 }
 
 void	ScalarConverter::charToDouble( char c)
 {
 	Utils::printMsg("double: ", "magenta");
-		std::cout << double(c) << std::endl;	
+		std::cout << double(c) << ".0\n";	
 }
 
 void	ScalarConverter::numToChar(double scalar)
 {
-	// fix with try catch
 	Utils::printMsg("char: ", "magenta");
-	if (scalar > 255 || scalar != (int)scalar)
-		std::cout << "invalid" << std::endl;
+	if (scalar < CHAR_MIN || scalar > CHAR_MAX || scalar != (int)scalar)
+		std::cout << "impossible" << std::endl;
 	else if (scalar < 32 || scalar == 127)
 		std::cout << "Non displayable" << std::endl;
 	else
@@ -44,29 +41,35 @@ void	ScalarConverter::numToChar(double scalar)
 
 }
 
-void		ScalarConverter::numToInt(double scalar)
+void	ScalarConverter::numToInt(double scalar)
 {
 	Utils::printMsg("int: ", "magenta");
-	std::cout << (int)scalar << std::endl;
+	if (scalar < INT_MIN || scalar > INT_MAX || isnan(scalar))
+		std::cout << "impossible" << std::endl;
+	else
+		std::cout << (int)scalar << std::endl;
 }
 
 void	ScalarConverter::numToFloat(double scalar)
 {
 	Utils::printMsg("float: ", "magenta");
-	std::cout << scalar << std::endl;
+	if ((scalar < FLT_MIN || scalar > FLT_MAX) && !isinf(scalar))
+		std::cout << "impossible" << std::endl;
+	else
+		std::cout << (float)scalar << ((scalar == (int)scalar) ? ".0f\n" : "f\n");
 }
 
-void	ScalarConverter::numToDouble( double scalar)
+void	ScalarConverter::numToDouble(double scalar)
 {
 	Utils::printMsg("double: ", "magenta");
-		std::cout << scalar << std::endl;	
+	std::cout << scalar << ((scalar == (int)scalar) ? ".0\n" : "\n");	
 }
 
 void ScalarConverter::convert(std::string str)
 {
 	char *rest;
 	double scalar = strtod(str.c_str(), &rest);
-	// we might need to handle char manually
+
 	if (strlen(str.c_str()) == 1 && !isdigit(str[0]))
 	{
 		ScalarConverter::charToChar(str[0]);
@@ -74,7 +77,7 @@ void ScalarConverter::convert(std::string str)
 		ScalarConverter::charToDouble(str[0]);
 		ScalarConverter::charToFloat(str[0]);
 	}
-	else if (!*rest || strIsEmpty(rest))
+	else if (!*rest || strIsEmpty(rest) || (*rest == 'f' && strIsEmpty(rest + 1)))
 	{
 		ScalarConverter::numToChar(scalar);
 		ScalarConverter::numToInt(scalar);
@@ -82,8 +85,5 @@ void ScalarConverter::convert(std::string str)
 		ScalarConverter::numToFloat(scalar);
 	}
 	else
-	{
-		std::cout << scalar << std::endl;
 		Utils::printErr("Invalid literal");
-	}
 }

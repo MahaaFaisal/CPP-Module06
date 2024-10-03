@@ -4,6 +4,9 @@
 # include <iostream>
 # include <stdlib.h>
 # include <string>
+# include <climits>
+# include <math.h>
+# include <float.h>
 
 #include "helpers.hpp"
 # include "Utils.hpp"
