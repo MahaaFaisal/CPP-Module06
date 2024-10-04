@@ -1,7 +1,7 @@
 CPP = c++
 CPPFLAGS = -Wall -Wextra -Werror
-SRCS = Utils.cpp main.cpp ScalarConverter.cpp helpers.cpp
-NAME = scalar
+SRCS = main.cpp Serializer.cpp Utils.cpp Data.cpp
+NAME = serializer
 
 all: $(NAME)
 
