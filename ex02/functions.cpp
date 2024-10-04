@@ -26,20 +26,16 @@ void	identify(Base* p)
 void	identify(Base& p)
 {
 	int i = 0;
-	try
-	{ (void)dynamic_cast <A &>(p); }
+	try { (void)dynamic_cast <A &>(p); }
 	catch(const std::exception& e)
 	{
 		i++;
-		try
-		{ (void)dynamic_cast <B &>(p); }
+		try { (void)dynamic_cast <B &>(p); }
 		catch(const std::exception& e)
 		{
 			i++;
-			try
-			{ (void)dynamic_cast <C &>(p); }
-			catch(const std::exception& e)
-			{ i++ ;}
+			try { (void)dynamic_cast <C &>(p); }
+			catch(const std::exception& e) { i++ ;}
 		}
 	}
 	switch (i)
