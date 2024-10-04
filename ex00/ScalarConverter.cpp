@@ -14,30 +14,30 @@ void	ScalarConverter::charToChar(char c)
 void	ScalarConverter::charToInt(char c)
 {
 	Utils::printMsg("int: ", "magenta");
-	std::cout << (int)c << std::endl;
+	std::cout << static_cast<int>(c) << std::endl;
 }
 
 void	ScalarConverter::charToFloat(char c)
 {
 	Utils::printMsg("float: ", "magenta");
-	std::cout << float(c) << ".0f\n";
+	std::cout << static_cast<float>(c) << ".0f\n";
 }
 
 void	ScalarConverter::charToDouble( char c)
 {
 	Utils::printMsg("double: ", "magenta");
-		std::cout << double(c) << ".0\n";	
+		std::cout << static_cast<double>(c) << ".0\n";	
 }
 
 void	ScalarConverter::numToChar(double scalar)
 {
 	Utils::printMsg("char: ", "magenta");
-	if (scalar < CHAR_MIN || scalar > CHAR_MAX || scalar != (int)scalar)
+	if (scalar < CHAR_MIN || scalar > CHAR_MAX || scalar != static_cast<int>(scalar))
 		std::cout << "impossible" << std::endl;
 	else if (scalar < 32 || scalar == 127)
 		std::cout << "Non displayable" << std::endl;
 	else
-		std::cout << char(scalar) << std::endl;
+		std::cout << static_cast<char>(scalar) << std::endl;
 
 }
 
@@ -47,22 +47,24 @@ void	ScalarConverter::numToInt(double scalar)
 	if (scalar < INT_MIN || scalar > INT_MAX || isnan(scalar))
 		std::cout << "impossible" << std::endl;
 	else
-		std::cout << (int)scalar << std::endl;
+		std::cout << static_cast<int>(scalar) << std::endl;
 }
 
 void	ScalarConverter::numToFloat(double scalar)
 {
 	Utils::printMsg("float: ", "magenta");
-	if ((scalar < FLT_MIN || scalar > FLT_MAX) && !isinf(scalar))
+	if ((scalar < -std::numeric_limits<float>::max() 
+		|| scalar > std::numeric_limits<float>::max())
+		&& !isinf(scalar))
 		std::cout << "impossible" << std::endl;
 	else
-		std::cout << (float)scalar << ((scalar == (int)scalar) ? ".0f\n" : "f\n");
+	std::cout << static_cast<float>(scalar) << ((scalar == static_cast<int>(scalar)) ? ".0f\n" : "f\n");
 }
 
 void	ScalarConverter::numToDouble(double scalar)
 {
 	Utils::printMsg("double: ", "magenta");
-	std::cout << scalar << ((scalar == (int)scalar) ? ".0\n" : "\n");	
+	std::cout << scalar << ((scalar == static_cast<int>(scalar)) ? ".0\n" : "\n");	
 }
 
 void ScalarConverter::convert(std::string str)

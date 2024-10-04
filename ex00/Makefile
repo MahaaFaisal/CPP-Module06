@@ -1,5 +1,5 @@
 CPP = c++
-CPPFLAGS = -Wall -Wextra -Werror -Wfatal-errors
+CPPFLAGS = -Wall -Wextra -Werror -std=c++98
 SRCS = Utils.cpp main.cpp ScalarConverter.cpp helpers.cpp
 NAME = scalar
 

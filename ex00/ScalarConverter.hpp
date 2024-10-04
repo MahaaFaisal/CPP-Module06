@@ -4,6 +4,7 @@
 # include <iostream>
 # include <stdlib.h>
 # include <string>
+# include <limits>
 # include <climits>
 # include <math.h>
 # include <float.h>

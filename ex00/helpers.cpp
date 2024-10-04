@@ -1,6 +1,5 @@
 
 #include "helpers.hpp"
-# include <string>
 
 bool	strIsEmpty(char *str)
 {
