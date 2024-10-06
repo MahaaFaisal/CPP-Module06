@@ -1,5 +1,12 @@
 #include "Utils.hpp"
 
+
+Utils::Utils() {}
+Utils::Utils(Utils &other) {(void)other;}
+Utils &Utils::operator=(Utils rhs){(void)rhs; return *this;}
+Utils::~Utils() {}
+
+
 void    Utils::printMsg(const std::string& msg, const std::string& color) {
     std::string textBold = "\033[1m";
     std::string textColor = "\033[37m"; // Default white

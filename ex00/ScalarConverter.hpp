@@ -1,5 +1,5 @@
-#ifndef SCALARCONVERTER_HPP
-# define SCALARCONVERTER_HPP
+#ifndef __SCALARCONVERTER_HPP__
+# define __SCALARCONVERTER_HPP__
 
 # include <iostream>
 # include <stdlib.h>

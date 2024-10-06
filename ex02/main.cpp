@@ -44,8 +44,18 @@ int main()
 	identify(ref);
 	std::cout << '\n';
 
+	Utils::printMsg("--- RANDOM GENERATION TEST ---\n", "green");
+	Base *random = generate();
+	Utils::printMsg("identify RANDOM pointer: ", "magenta");
+	identify(random);
+	Base &randomRef = *random;
+	Utils::printMsg("identify RANDOM reference: ", "magenta");
+	identify(randomRef);
+	std::cout << '\n';
+
 	delete baseA;
 	delete baseB;
 	delete baseC;
 	delete base;
+	delete random;
 }

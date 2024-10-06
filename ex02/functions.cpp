@@ -25,32 +25,27 @@ void	identify(Base* p)
 
 void	identify(Base& p)
 {
-	int i = 0;
-	try { (void)dynamic_cast <A &>(p); }
+	try 
+	{
+		(void)dynamic_cast <A &>(p);
+		std::cout << "it is an A object reference\n";
+	}
 	catch(const std::exception& e)
 	{
-		i++;
-		try { (void)dynamic_cast <B &>(p); }
+		try
+		{
+			(void)dynamic_cast <B &>(p);
+			std::cout << "it is a B object reference\n";
+		}
 		catch(const std::exception& e)
 		{
-			i++;
-			try { (void)dynamic_cast <C &>(p); }
-			catch(const std::exception& e) { i++ ;}
+			try
+			{
+				(void)dynamic_cast <C &>(p);
+				std::cout << "it is a C object reference\n";
+			}
+		catch(const std::exception& e) { std::cout << "it is a base object reference\n"; }
 		}
 	}
-	switch (i)
-	{
-		case (0):
-			std::cout << "it is an A object reference\n";
-			break;
-		case (1):
-			std::cout << "it is a B object reference\n";
-			break;
-		case (2):
-			std::cout << "it is a C object reference\n";
-			break;
-		case (3):
-			std::cout << "it is a base object reference\n";
-			break;
-	}
 }
+

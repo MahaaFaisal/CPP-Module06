@@ -1,5 +1,5 @@
-#ifndef HELPERS_HPP
-# define HELPERS_HPP
+#ifndef __HELPERS_HPP__
+# define __HELPERS_HPP__
 
 # include <stdlib.h>
 #include <cstring>

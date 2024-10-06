@@ -7,7 +7,13 @@
 
 class Utils 
 {
+    protected:
+        ~Utils();
     public:
+        Utils();
+        Utils(Utils &other);
+        Utils &operator=(Utils rhs);
+
         static void printMsg(const std::string& msg, const std::string& color);
         static void printErr(const std::string& msg);
 };

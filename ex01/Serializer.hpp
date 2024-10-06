@@ -1,5 +1,5 @@
-#ifndef SERIALIZER_HPP
-# define SERIALIZER_HPP
+#ifndef __SERIALIZER_HPP__
+# define __SERIALIZER_HPP__
 
 # include <stdint.h>
 # include "Data.hpp"

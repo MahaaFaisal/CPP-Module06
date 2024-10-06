@@ -1,5 +1,5 @@
-#ifndef DATA_HPP
-# define DATA_HPP
+#ifndef __DATA_HPP__
+# define __DATA_HPP__
 
 class Data
 {
