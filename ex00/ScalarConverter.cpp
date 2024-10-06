@@ -8,7 +8,7 @@ ScalarConverter::~ScalarConverter(){}
 void	ScalarConverter::charToChar(char c)
 {
 	Utils::printMsg("char: ", "magenta");
-	std::cout << c << std::endl;
+	std::cout << '\'' << c << '\'' << std::endl;
 }
 
 void	ScalarConverter::charToInt(char c)
@@ -37,7 +37,7 @@ void	ScalarConverter::numToChar(double scalar)
 	else if (scalar < 32 || scalar == 127)
 		std::cout << "Non displayable" << std::endl;
 	else
-		std::cout << static_cast<char>(scalar) << std::endl;
+		std::cout << '\'' << static_cast<char>(scalar) << '\'' << std::endl;
 
 }
 
